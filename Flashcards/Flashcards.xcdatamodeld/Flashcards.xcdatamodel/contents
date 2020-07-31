@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Flaschard" representedClassName="Flaschard" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="firstTranslation" maxCount="1" deletionRule="Nullify" destinationEntity="Word"/>
+        <relationship name="secondTranslation" maxCount="1" deletionRule="Nullify" destinationEntity="Word"/>
+    </entity>
+    <entity name="Language" representedClassName="Language" syncable="YES" codeGenerationType="class">
+        <attribute name="code" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="name" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word"/>
+    </entity>
+    <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="spelling" optional="YES" attributeType="String"/>
+        <relationship name="language" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language"/>
+    </entity>
+    <elements>
+        <element name="Flaschard" positionX="-532.44921875" positionY="-22.78125" width="128" height="88"/>
+        <element name="Word" positionX="-297.6953125" positionY="-110.40625" width="128" height="88"/>
+        <element name="Language" positionX="-36" positionY="9" width="128" height="88"/>
+    </elements>
+</model>
