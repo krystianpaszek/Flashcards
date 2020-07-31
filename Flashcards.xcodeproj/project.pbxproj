@@ -17,6 +17,7 @@
 		97D8CE0F24D435160065E344 /* FlashcardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D8CE0E24D435160065E344 /* FlashcardsTests.swift */; };
 		97D8CE1A24D436A80065E344 /* CategoriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D8CE1924D436A80065E344 /* CategoriesList.swift */; };
 		97D8CE1C24D436B70065E344 /* WordsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D8CE1B24D436B70065E344 /* WordsList.swift */; };
+		97F8E3D124D4D90600190DDB /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F8E3D024D4D90600190DDB /* DataFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		97D8CE1024D435160065E344 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97D8CE1924D436A80065E344 /* CategoriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesList.swift; sourceTree = "<group>"; };
 		97D8CE1B24D436B70065E344 /* WordsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsList.swift; sourceTree = "<group>"; };
+		97F8E3D024D4D90600190DDB /* DataFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				97D8CE0524D435160065E344 /* Info.plist */,
 				97D8CDF824D435140065E344 /* Flashcards.xcdatamodeld */,
 				97D8CDFF24D435160065E344 /* Preview Content */,
+				97F8E3D024D4D90600190DDB /* DataFactory.swift */,
 			);
 			path = Flashcards;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				97D8CE1A24D436A80065E344 /* CategoriesList.swift in Sources */,
 				97D8CE1C24D436B70065E344 /* WordsList.swift in Sources */,
 				97D8CDF524D435140065E344 /* AppDelegate.swift in Sources */,
+				97F8E3D124D4D90600190DDB /* DataFactory.swift in Sources */,
 				97D8CDFA24D435140065E344 /* Flashcards.xcdatamodeld in Sources */,
 				97D8CDFC24D435140065E344 /* RootView.swift in Sources */,
 				97D8CDF724D435140065E344 /* SceneDelegate.swift in Sources */,
