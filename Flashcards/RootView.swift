@@ -13,21 +13,19 @@ struct RootView: View {
  
     var body: some View {
         TabView(selection: $selection) {
-            Text("First View")
-                .font(.title)
+            CategoriesList()
                 .tabItem {
                     VStack {
-                        Image("first")
-                        Text("First")
+                        Image(systemName: "list.bullet")
+                        Text("Categories")
                     }
                 }
                 .tag(0)
-            Text("Second View")
-                .font(.title)
+            WordsList()
                 .tabItem {
                     VStack {
-                        Image("second")
-                        Text("Second")
+                        Image(systemName: "book")
+                        Text("Words")
                     }
                 }
                 .tag(1)
