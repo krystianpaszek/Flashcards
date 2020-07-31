@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Flaschard" representedClassName="Flaschard" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="firstTranslation" maxCount="1" deletionRule="Nullify" destinationEntity="Word"/>
-        <relationship name="secondTranslation" maxCount="1" deletionRule="Nullify" destinationEntity="Word"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1">
+    <entity name="FCDCategory" representedClassName="FCDCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
     </entity>
-    <entity name="Language" representedClassName="Language" syncable="YES" codeGenerationType="class">
-        <attribute name="code" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="name" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word"/>
+    <entity name="FCDFlaschard" representedClassName="FCDFlaschard" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="words" toMany="YES" deletionRule="Nullify" destinationEntity="FCDWord" inverseName="flashcards" inverseEntity="FCDWord"/>
     </entity>
-    <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="spelling" optional="YES" attributeType="String"/>
-        <relationship name="language" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language"/>
+    <entity name="FCDLanguage" representedClassName="FCDLanguage" syncable="YES" codeGenerationType="class">
+        <attribute name="code" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="words" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FCDWord" inverseName="language" inverseEntity="FCDWord"/>
+    </entity>
+    <entity name="FCDWord" representedClassName="FCDWord" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="spelling" attributeType="String"/>
+        <relationship name="flashcards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FCDFlaschard" inverseName="words" inverseEntity="FCDFlaschard"/>
+        <relationship name="language" maxCount="1" deletionRule="Nullify" destinationEntity="FCDLanguage" inverseName="words" inverseEntity="FCDLanguage"/>
     </entity>
     <elements>
-        <element name="Flaschard" positionX="-532.44921875" positionY="-22.78125" width="128" height="88"/>
-        <element name="Word" positionX="-297.6953125" positionY="-110.40625" width="128" height="88"/>
-        <element name="Language" positionX="-36" positionY="9" width="128" height="88"/>
+        <element name="FCDFlaschard" positionX="-532.44921875" positionY="-22.78125" width="128" height="73"/>
+        <element name="FCDLanguage" positionX="-36" positionY="9" width="128" height="103"/>
+        <element name="FCDWord" positionX="-297.6953125" positionY="-110.40625" width="128" height="103"/>
+        <element name="FCDCategory" positionX="-324" positionY="-9" width="128" height="58"/>
     </elements>
 </model>
