@@ -13,6 +13,14 @@ struct RootView: View {
  
     var body: some View {
         TabView(selection: $selection) {
+            LanguagesList()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "globe")
+                        Text("Languages")
+                    }
+                }
+                .tag(0)
             CategoriesList()
                 .tabItem {
                     VStack {
@@ -20,7 +28,7 @@ struct RootView: View {
                         Text("Categories")
                     }
                 }
-                .tag(0)
+                .tag(1)
             WordsList()
                 .tabItem {
                     VStack {
@@ -28,7 +36,7 @@ struct RootView: View {
                         Text("Words")
                     }
                 }
-                .tag(1)
+                .tag(2)
         }
     }
 }
