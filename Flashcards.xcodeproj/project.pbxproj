@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97125D1B24D57CD300441B32 /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97125D1A24D57CD300441B32 /* HomescreenView.swift */; };
+		97125D1E24D57CFC00441B32 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97125D1D24D57CFC00441B32 /* LibraryView.swift */; };
 		979879E024D4DD7D008CC561 /* LanguagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979879DF24D4DD7D008CC561 /* LanguagesList.swift */; };
 		97D8CDF524D435140065E344 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D8CDF424D435140065E344 /* AppDelegate.swift */; };
 		97D8CDF724D435140065E344 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D8CDF624D435140065E344 /* SceneDelegate.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		97125D1A24D57CD300441B32 /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
+		97125D1D24D57CFC00441B32 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		979879DF24D4DD7D008CC561 /* LanguagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesList.swift; sourceTree = "<group>"; };
 		97D8CDF124D435140065E344 /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D8CDF424D435140065E344 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +72,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97125D1C24D57CDA00441B32 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				97125D1D24D57CFC00441B32 /* LibraryView.swift */,
+				97D8CE1924D436A80065E344 /* CategoriesList.swift */,
+				97D8CE1B24D436B70065E344 /* WordsList.swift */,
+				979879DF24D4DD7D008CC561 /* LanguagesList.swift */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
 		97D8CDE824D435140065E344 = {
 			isa = PBXGroup;
 			children = (
@@ -92,9 +107,8 @@
 				97D8CDF424D435140065E344 /* AppDelegate.swift */,
 				97D8CDF624D435140065E344 /* SceneDelegate.swift */,
 				97D8CDFB24D435140065E344 /* RootView.swift */,
-				97D8CE1924D436A80065E344 /* CategoriesList.swift */,
-				97D8CE1B24D436B70065E344 /* WordsList.swift */,
-				979879DF24D4DD7D008CC561 /* LanguagesList.swift */,
+				97125D1A24D57CD300441B32 /* HomescreenView.swift */,
+				97125D1C24D57CDA00441B32 /* Library */,
 				97D8CDFD24D435160065E344 /* Assets.xcassets */,
 				97D8CE0224D435160065E344 /* LaunchScreen.storyboard */,
 				97D8CE0524D435160065E344 /* Info.plist */,
@@ -228,8 +242,10 @@
 				97D8CE1C24D436B70065E344 /* WordsList.swift in Sources */,
 				97D8CDF524D435140065E344 /* AppDelegate.swift in Sources */,
 				97F8E3D124D4D90600190DDB /* DataFactory.swift in Sources */,
+				97125D1B24D57CD300441B32 /* HomescreenView.swift in Sources */,
 				97D8CDFA24D435140065E344 /* Flashcards.xcdatamodeld in Sources */,
 				97D8CDFC24D435140065E344 /* RootView.swift in Sources */,
+				97125D1E24D57CFC00441B32 /* LibraryView.swift in Sources */,
 				97D8CDF724D435140065E344 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +403,7 @@
 				DEVELOPMENT_TEAM = QCNU46SB92;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Flashcards/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -407,6 +424,7 @@
 				DEVELOPMENT_TEAM = QCNU46SB92;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Flashcards/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
