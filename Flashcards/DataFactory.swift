@@ -60,13 +60,23 @@ class DataFactory: NSObject {
     }
 }
 
+// MARK: - Languages
 @discardableResult
-private func makeLanguage(name: String, code: String, in context: NSManagedObjectContext) -> FCDLanguage {
+private func makeLanguage(name: String, code: String, in context: NSManagedObjectContext) -> FCDLanguage? {
+    guard countOfLanguages(withCode: code, in: context) == 0 else { return nil }
+
     let english = FCDLanguage(context: context)
     english.id = UUID()
     english.name = name
     english.code = code
     return english
+}
+
+private func countOfLanguages(withCode code: String, in context: NSManagedObjectContext) -> Int {
+    let fetchRequest: NSFetchRequest<FCDLanguage> = FCDLanguage.fetchRequest()
+    fetchRequest.predicate = NSPredicate(format: "code == %@", code)
+    let count = try! context.count(for: fetchRequest)
+    return count
 }
 
 private func getLanguage(code: String, in context: NSManagedObjectContext) -> FCDLanguage {
@@ -76,11 +86,28 @@ private func getLanguage(code: String, in context: NSManagedObjectContext) -> FC
     return result.first!
 }
 
+// MARK: - Words
 @discardableResult
-private func makeWord(spelling: String, languageCode: String, in context: NSManagedObjectContext) -> FCDWord {
+private func makeWord(spelling: String, languageCode: String, in context: NSManagedObjectContext) -> FCDWord? {
+    guard countOfWords(withSpelling: spelling, languageCode: languageCode, in: context) == 0 else { return nil }
+
     let word = FCDWord(context: context)
     word.id = UUID()
     word.spelling = spelling
     word.language = getLanguage(code: languageCode, in: context)
     return word
+}
+
+private func countOfWords(withSpelling spelling: String, languageCode: String, in context: NSManagedObjectContext) -> Int {
+    let fetchRequest: NSFetchRequest<FCDWord> = FCDWord.fetchRequest()
+    fetchRequest.predicate = NSPredicate(format: "spelling == %@ && language.code == %@", spelling, languageCode)
+    let count = try! context.count(for: fetchRequest)
+    return count
+}
+
+private func getWord(withSpelling spelling: String, languageCode: String, in context: NSManagedObjectContext) -> FCDWord {
+    let fetchRequest: NSFetchRequest<FCDWord> = FCDWord.fetchRequest()
+    fetchRequest.predicate = NSPredicate(format: "spelling == %@ && language.code == %@", spelling, languageCode)
+    let result = try! context.fetch(fetchRequest)
+    return result.first!
 }
