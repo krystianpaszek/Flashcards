@@ -24,8 +24,6 @@ class DataFactory: NSObject {
         createLanguages()
         createWords()
         createFlashcards()
-
-        saveContext()
     }
 
     // MARK: - Private functions
@@ -33,6 +31,8 @@ class DataFactory: NSObject {
         makeLanguage(name: "Polish", code: "pl", in: context)
         makeLanguage(name: "English", code: "en", in: context)
         makeLanguage(name: "German", code: "de", in: context)
+
+        saveContext()
     }
 
     private func createWords() {
@@ -40,10 +40,13 @@ class DataFactory: NSObject {
         makeWord(spelling: "smell", languageCode: "en", in: context)
         makeWord(spelling: "laufen", languageCode: "de", in: context)
         makeWord(spelling: "to run", languageCode: "en", in: context)
+
+        saveContext()
     }
 
     private func createFlashcards() {
 
+        saveContext()
     }
 
     private func saveContext() {
@@ -61,14 +64,14 @@ class DataFactory: NSObject {
 private func makeLanguage(name: String, code: String, in context: NSManagedObjectContext) -> FCDLanguage {
     let english = FCDLanguage(context: context)
     english.id = UUID()
-    english.name = "English"
-    english.code = "en"
+    english.name = name
+    english.code = code
     return english
 }
 
 private func getLanguage(code: String, in context: NSManagedObjectContext) -> FCDLanguage {
     let fetchRequest: NSFetchRequest<FCDLanguage> = FCDLanguage.fetchRequest()
-    fetchRequest.predicate = NSPredicate(format: "code = %@", code)
+    fetchRequest.predicate = NSPredicate(format: "code == %@", code)
     let result = try! context.fetch(fetchRequest)
     return result.first!
 }
