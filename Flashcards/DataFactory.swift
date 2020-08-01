@@ -49,6 +49,8 @@ class DataFactory: NSObject {
         makeWord(spelling: "smell", languageCode: "en", in: context)
         makeWord(spelling: "laufen", languageCode: "de", in: context)
         makeWord(spelling: "to run", languageCode: "en", in: context)
+        makeWord(spelling: "besuchen", languageCode: "de", in: context)
+        makeWord(spelling: "to visit", languageCode: "en", in: context)
 
         saveContext()
     }
