@@ -65,11 +65,11 @@ class DataFactory: NSObject {
 private func makeLanguage(name: String, code: String, in context: NSManagedObjectContext) -> FCDLanguage? {
     guard countOfLanguages(withCode: code, in: context) == 0 else { return nil }
 
-    let english = FCDLanguage(context: context)
-    english.id = UUID()
-    english.name = name
-    english.code = code
-    return english
+    let language = FCDLanguage(context: context)
+    language.id = UUID()
+    language.name = name
+    language.code = code
+    return language
 }
 
 private func countOfLanguages(withCode code: String, in context: NSManagedObjectContext) -> Int {
