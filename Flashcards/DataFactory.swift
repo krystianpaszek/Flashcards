@@ -20,6 +20,15 @@ class DataFactory: NSObject {
     }
 
     // MARK: - Public functions
+    func clearCoreData() {
+        removeAll(in: FCDLanguage.fetchRequest(), context: context)
+        removeAll(in: FCDCategory.fetchRequest(), context: context)
+        removeAll(in: FCDFlaschard.fetchRequest(), context: context)
+        removeAll(in: FCDWord.fetchRequest(), context: context)
+
+        saveContext()
+    }
+
     func populateCoreData() {
         createLanguages()
         createWords()
@@ -159,4 +168,9 @@ private func getFlashcard(withWords words: [FCDWord], in context: NSManagedObjec
     fetchRequest.predicate = NSPredicate(format: "words IN %@", words)
     let result = try! context.fetch(fetchRequest)
     return result.first!
+}
+
+// MARK: - General functions
+private func removeAll<T: NSManagedObject>(in fetchRequest: NSFetchRequest<T>, context: NSManagedObjectContext) {
+    (try! context.fetch(fetchRequest)).forEach { context.delete($0) }
 }
