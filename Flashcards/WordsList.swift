@@ -25,10 +25,28 @@ struct WordsList: View {
                     }
                 }
             }.listStyle(GroupedListStyle())
+            AddWordView()
         }.navigationBarTitle("Words")
     }
+}
+
+struct AddWordView: View {
+    @EnvironmentObject private var dataFactory: DataFactory
+    @State private var newWordName: String = ""
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            TextField("Enter new word", text: $newWordName)
+            Button(action: {
+                self.addWord()
+            }, label: {
+                Text("Add word")
+            })
+        }.padding(.all)
+    }
+
+    private func addWord() {
+        dataFactory.addWord(spelling: newWordName, languageCode: "de")
     }
 }
 
