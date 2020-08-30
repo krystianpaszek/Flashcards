@@ -144,6 +144,7 @@ private func makeCategory(name: String, flashcards: [FCDFlaschard], in context: 
     let category = FCDCategory(context: context)
     category.id = UUID()
     category.name = name
+    category.addToFlashcards(NSSet(array: flashcards))
     return category
 }
 
