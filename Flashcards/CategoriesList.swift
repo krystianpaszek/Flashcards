@@ -9,12 +9,21 @@
 import SwiftUI
 
 struct CategoriesList: View {
-    
+
     @FetchRequest(entity: FCDCategory.entity(), sortDescriptors: []) var categories: FetchedResults<FCDCategory>
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(categories) { category in
+            Section(header: Text("")) {
+                NavigationLink(destination: FlashcardsList(categoryName: category.name!)) {
+                    Text(category.name!)
+                }
+            }
+        }
+        .listStyle(InsetGroupedListStyle())
+        .navigationBarTitle("Categories")
     }
+
 }
 
 struct CategoriesList_Previews: PreviewProvider {
