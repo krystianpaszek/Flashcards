@@ -69,6 +69,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let context = URLContexts.first else { return }
+        let fileImporter = FileImporter.shared
+        let url = context.url
+
+        try? fileImporter.load(contentsOf: url)
+    }
 
 }
 
