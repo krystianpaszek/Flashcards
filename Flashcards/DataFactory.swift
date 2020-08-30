@@ -154,13 +154,15 @@ private func makeFlashcard(firstWord: FCDWord, secondWord: FCDWord, in context: 
     guard countOfFlashcards(withWords: [firstWord, secondWord], in: context) == 0 else { return nil }
 
     let flashcard = FCDFlaschard(context: context)
+    flashcard.id = UUID()
     flashcard.words = [firstWord, secondWord]
     return flashcard
 }
 
 private func countOfFlashcards(withWords words: [FCDWord], in context: NSManagedObjectContext) -> Int {
     let fetchRequest: NSFetchRequest<FCDFlaschard> = FCDFlaschard.fetchRequest()
-    fetchRequest.predicate = NSPredicate(format: "words IN %@", words)
+    let rawWords = words.compactMap(\.spelling)
+    fetchRequest.predicate = NSPredicate(format: "SUBQUERY(words, $word, $word IN %@).@count > 0", rawWords)
     let count = try! context.count(for: fetchRequest)
     return count
 }
