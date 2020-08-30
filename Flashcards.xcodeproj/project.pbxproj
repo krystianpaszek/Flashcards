@@ -12,6 +12,7 @@
 		979879E024D4DD7D008CC561 /* LanguagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979879DF24D4DD7D008CC561 /* LanguagesList.swift */; };
 		979FB49424FBCDBC0068CA6A /* FileImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979FB49324FBCDBC0068CA6A /* FileImporter.swift */; };
 		979FB49824FBCFFC0068CA6A /* TestYourEnglishFormatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979FB49724FBCFFC0068CA6A /* TestYourEnglishFormatParser.swift */; };
+		979FB49B24FBF4D80068CA6A /* FlashcardsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979FB49A24FBF4D80068CA6A /* FlashcardsList.swift */; };
 		97D8CDF524D435140065E344 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D8CDF424D435140065E344 /* AppDelegate.swift */; };
 		97D8CDF724D435140065E344 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D8CDF624D435140065E344 /* SceneDelegate.swift */; };
 		97D8CDFA24D435140065E344 /* Flashcards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 97D8CDF824D435140065E344 /* Flashcards.xcdatamodeld */; };
@@ -41,6 +42,7 @@
 		979879DF24D4DD7D008CC561 /* LanguagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesList.swift; sourceTree = "<group>"; };
 		979FB49324FBCDBC0068CA6A /* FileImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileImporter.swift; sourceTree = "<group>"; };
 		979FB49724FBCFFC0068CA6A /* TestYourEnglishFormatParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestYourEnglishFormatParser.swift; sourceTree = "<group>"; };
+		979FB49A24FBF4D80068CA6A /* FlashcardsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardsList.swift; sourceTree = "<group>"; };
 		97D8CDF124D435140065E344 /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D8CDF424D435140065E344 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97D8CDF624D435140065E344 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				97D8CE1924D436A80065E344 /* CategoriesList.swift */,
 				97D8CE1B24D436B70065E344 /* WordsList.swift */,
 				979879DF24D4DD7D008CC561 /* LanguagesList.swift */,
+				979FB49A24FBF4D80068CA6A /* FlashcardsList.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				97D8CE1C24D436B70065E344 /* WordsList.swift in Sources */,
 				97D8CDF524D435140065E344 /* AppDelegate.swift in Sources */,
 				97F8E3D124D4D90600190DDB /* DataFactory.swift in Sources */,
+				979FB49B24FBF4D80068CA6A /* FlashcardsList.swift in Sources */,
 				979FB49824FBCFFC0068CA6A /* TestYourEnglishFormatParser.swift in Sources */,
 				97125D1B24D57CD300441B32 /* HomescreenView.swift in Sources */,
 				97D8CDFA24D435140065E344 /* Flashcards.xcdatamodeld in Sources */,
