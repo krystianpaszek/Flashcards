@@ -42,6 +42,13 @@ class DataFactory: NSObject, ObservableObject {
         return flashcard
     }
 
+    @discardableResult
+    func addCategory(name: String, flashcards: [FCDFlaschard]) -> FCDCategory? {
+        let category = makeCategory(name: name, flashcards: flashcards, in: context)
+        saveContext()
+        return category
+    }
+
     // MARK: - Public functions
     func clearCoreData() {
         removeAll(in: FCDLanguage.fetchRequest(), context: context)
@@ -54,8 +61,7 @@ class DataFactory: NSObject, ObservableObject {
 
     func populateCoreData() {
         createLanguages()
-        createWords()
-        createFlashcards()
+        createCategories()
     }
 
     // MARK: - Private functions
@@ -67,18 +73,24 @@ class DataFactory: NSObject, ObservableObject {
         saveContext()
     }
 
-    private func createWords() {
-        makeWord(spelling: "riechen", languageCode: "de", in: context)
-        makeWord(spelling: "smell", languageCode: "en", in: context)
-        makeWord(spelling: "laufen", languageCode: "de", in: context)
-        makeWord(spelling: "to run", languageCode: "en", in: context)
-        makeWord(spelling: "besuchen", languageCode: "de", in: context)
-        makeWord(spelling: "to visit", languageCode: "en", in: context)
-
-        saveContext()
-    }
-
-    private func createFlashcards() {
+    private func createCategories() {
+        makeCategory(name: "Prepoluated category", flashcards: [
+            makeFlashcard(
+                firstWord: makeWord(spelling: "riechen", languageCode: "de", in: context)!,
+                secondWord: makeWord(spelling: "smell", languageCode: "en", in: context)!,
+                in: context
+            )!,
+            makeFlashcard(
+                firstWord: makeWord(spelling: "laufen", languageCode: "de", in: context)!,
+                secondWord: makeWord(spelling: "to run", languageCode: "en", in: context)!,
+                in: context
+            )!,
+            makeFlashcard(
+                firstWord: makeWord(spelling: "besuchen", languageCode: "de", in: context)!,
+                secondWord: makeWord(spelling: "to visit", languageCode: "en", in: context)!,
+                in: context
+            )!,
+        ], in: context)
 
         saveContext()
     }
