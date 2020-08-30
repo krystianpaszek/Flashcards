@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct LanguagesList: View {
-    @Environment(\.managedObjectContext) var context
     @FetchRequest(entity: FCDLanguage.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)]) var languages: FetchedResults<FCDLanguage>
 
     var body: some View {
