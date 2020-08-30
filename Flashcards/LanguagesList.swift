@@ -13,9 +13,9 @@ struct LanguagesList: View {
     @FetchRequest(entity: FCDLanguage.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)]) var languages: FetchedResults<FCDLanguage>
 
     var body: some View {
-        List(languages) { object in
-            Text((object as! FCDLanguage).name!)
-        }
+        List(languages) { language in
+            Text(language.name!)
+        }.listStyle(GroupedListStyle())
     }
 }
 
