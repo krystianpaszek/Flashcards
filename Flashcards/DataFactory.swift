@@ -97,7 +97,9 @@ class DataFactory: NSObject, ObservableObject {
 // MARK: - Languages
 @discardableResult
 private func makeLanguage(name: String, code: String, in context: NSManagedObjectContext) -> FCDLanguage? {
-    guard countOfLanguages(withCode: code, in: context) == 0 else { return nil }
+    guard countOfLanguages(withCode: code, in: context) == 0 else {
+        return getLanguage(code: code, in: context)
+    }
 
     let language = FCDLanguage(context: context)
     language.id = UUID()
@@ -122,8 +124,10 @@ private func getLanguage(code: String, in context: NSManagedObjectContext) -> FC
 
 // MARK: - Categories
 @discardableResult
-private func makeCategory(name: String, code: String, in context: NSManagedObjectContext) -> FCDCategory? {
-    guard countOfCategories(withName: code, in: context) == 0 else { return nil }
+private func makeCategory(name: String, flashcards: [FCDFlaschard], in context: NSManagedObjectContext) -> FCDCategory? {
+    guard countOfCategories(withName: name, in: context) == 0 else {
+        return getCategory(name: name, in: context)
+    }
 
     let category = FCDCategory(context: context)
     category.id = UUID()
@@ -148,7 +152,9 @@ private func getCategory(name: String, in context: NSManagedObjectContext) -> FC
 // MARK: - Words
 @discardableResult
 private func makeWord(spelling: String, languageCode: String, in context: NSManagedObjectContext) -> FCDWord? {
-    guard countOfWords(withSpelling: spelling, languageCode: languageCode, in: context) == 0 else { return nil }
+    guard countOfWords(withSpelling: spelling, languageCode: languageCode, in: context) == 0 else {
+        return getWord(withSpelling: spelling, languageCode: languageCode, in: context)
+    }
 
     let word = FCDWord(context: context)
     word.id = UUID()
@@ -174,7 +180,10 @@ private func getWord(withSpelling spelling: String, languageCode: String, in con
 // MARK: - Flashcards
 @discardableResult
 private func makeFlashcard(firstWord: FCDWord, secondWord: FCDWord, in context: NSManagedObjectContext) -> FCDFlaschard? {
-    guard countOfFlashcards(withWords: [firstWord, secondWord], in: context) == 0 else { return nil }
+    let words = [firstWord, secondWord]
+    guard countOfFlashcards(withWords: words, in: context) == 0 else {
+        return getFlashcard(withWords: words, in: context)
+    }
 
     let flashcard = FCDFlaschard(context: context)
     flashcard.id = UUID()
