@@ -25,6 +25,9 @@ struct LibraryView: View {
                     NavigationLink(destination: WordsList()) {
                         LibraryRow(text: "Words", count: wordsCount())
                     }
+                    NavigationLink(destination: FlashcardsList()) {
+                        LibraryRow(text: "Flashcards", count: flashcardCount())
+                    }
                 }
             }
             .listStyle(InsetGroupedListStyle())
@@ -42,6 +45,10 @@ struct LibraryView: View {
 
     private func wordsCount() -> Int {
         return count(for: FCDWord.fetchRequest())
+    }
+
+    private func flashcardCount() -> Int {
+        return count(for: FCDFlaschard.fetchRequest())
     }
 
     private func count(for fetchRequest: NSFetchRequest<NSFetchRequestResult>) -> Int {
