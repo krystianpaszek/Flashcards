@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct CategoriesList: View {
+    
+    @FetchRequest(entity: FCDCategory.entity(), sortDescriptors: []) var categories: FetchedResults<FCDCategory>
+
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
