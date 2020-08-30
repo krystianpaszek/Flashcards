@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import SwiftUI
 
-class DataFactory: NSObject {
+class DataFactory: NSObject, ObservableObject {
 
     // MARK: - Dependencies
     let context: NSManagedObjectContext
@@ -17,6 +18,28 @@ class DataFactory: NSObject {
     // MARK: - Initialization
     init(context: NSManagedObjectContext) {
         self.context = context
+    }
+
+    // MARK: - Adding entities
+    @discardableResult
+    func addWord(spelling: String, languageCode: String) -> FCDWord? {
+        let word = makeWord(spelling: spelling, languageCode: languageCode, in: context)
+        saveContext()
+        return word
+    }
+
+    @discardableResult
+    func addLanguage(name: String, code: String) -> FCDLanguage? {
+        let language = makeLanguage(name: name, code: code, in: context)
+        saveContext()
+        return language
+    }
+
+    @discardableResult
+    func addFlashcard(firstWord: FCDWord, secondWord: FCDWord) -> FCDFlaschard? {
+        let flashcard = makeFlashcard(firstWord: firstWord, secondWord: secondWord, in: context)
+        saveContext()
+        return flashcard
     }
 
     // MARK: - Public functions
