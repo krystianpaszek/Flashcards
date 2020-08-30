@@ -10,15 +10,25 @@ import SwiftUI
 
 struct FlashcardsList: View {
 
-    @FetchRequest(
-        entity: FCDFlaschard.entity(),
-        sortDescriptors: []
-    )
-    private var flashcards: FetchedResults<FCDFlaschard>
+    private let categoryName: String?
+    private var fetch: FetchRequest<FCDFlaschard>
+    private var flashcards: FetchedResults<FCDFlaschard> {
+        fetch.wrappedValue
+    }
+
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
+
+    init(categoryName: String? = nil) {
+        self.categoryName = categoryName
+        self.fetch = FetchRequest<FCDFlaschard>(
+            entity: FCDFlaschard.entity(),
+            sortDescriptors: [],
+            predicate: categoryName != nil ? NSPredicate(format: "category.name == %@", categoryName!) : nil
+        )
+    }
 
     var body: some View {
         ScrollView {
@@ -27,7 +37,7 @@ struct FlashcardsList: View {
                     FlashcardView(flashcard: flashcard)
                 }
             }.padding()
-        }.navigationBarTitle("Flashcards")
+        }.navigationBarTitle(categoryName != nil ? categoryName! : "Flashcards")
     }
 
 }
