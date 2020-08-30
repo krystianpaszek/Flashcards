@@ -15,14 +15,16 @@ struct LibraryView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: LanguagesList()) {
-                    LibraryRow(text: "Languages", count: languagesCount())
-                }
-                NavigationLink(destination: CategoriesList()) {
-                    LibraryRow(text: "Categories", count: categoriesCount())
-                }
-                NavigationLink(destination: WordsList()) {
-                    LibraryRow(text: "Words", count: wordsCount())
+                Section(header: Text("")) {
+                    NavigationLink(destination: LanguagesList()) {
+                        LibraryRow(text: "Languages", count: languagesCount())
+                    }
+                    NavigationLink(destination: CategoriesList()) {
+                        LibraryRow(text: "Categories", count: categoriesCount())
+                    }
+                    NavigationLink(destination: WordsList()) {
+                        LibraryRow(text: "Words", count: wordsCount())
+                    }
                 }
             }
             .listStyle(InsetGroupedListStyle())
