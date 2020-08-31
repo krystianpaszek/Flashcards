@@ -11,6 +11,7 @@ import CoreData
 
 struct LibraryView: View {
     @Environment(\.managedObjectContext) var context
+    @EnvironmentObject var dataFactory: DataFactory
 
     var body: some View {
         NavigationView {
@@ -27,6 +28,11 @@ struct LibraryView: View {
                     }
                     NavigationLink(destination: FlashcardsList()) {
                         LibraryRow(text: "Flashcards", count: flashcardCount())
+                    }
+                }
+                Section(header: Text("Utilities")) {
+                    Button("Clear data store") {
+                        dataFactory.clearCoreData()
                     }
                 }
             }
