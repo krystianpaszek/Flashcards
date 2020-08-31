@@ -13,6 +13,7 @@ struct LibraryView: View {
     @Environment(\.managedObjectContext) var context
     @EnvironmentObject var dataFactory: DataFactory
 
+    @State private var isImporting: Bool = false
     @State private var isShowingAlert: Bool = false
 
     var body: some View {
@@ -43,12 +44,22 @@ struct LibraryView: View {
                             secondaryButton: Alert.Button.destructive(Text("Yes")) { dataFactory.clearCoreData() }
                         )
                     }
+                    Button("Import file") {
+                        self.isImporting = true
                     }
                 }
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Library")
         }
+        .fileImporter(isPresented: $isImporting, allowedContentTypes: [.text], onCompletion: { result in
+            do {
+                let selectedFile = try result.get()
+                try FileImporter.shared.load(contentsOf: selectedFile)
+            } catch {
+                print(error)
+            }
+        })
     }
 
     private func languagesCount() -> Int {
