@@ -13,6 +13,8 @@ struct LibraryView: View {
     @Environment(\.managedObjectContext) var context
     @EnvironmentObject var dataFactory: DataFactory
 
+    @State private var isShowingAlert: Bool = false
+
     var body: some View {
         NavigationView {
             List {
@@ -32,7 +34,15 @@ struct LibraryView: View {
                 }
                 Section(header: Text("Utilities")) {
                     Button("Clear data store") {
-                        dataFactory.clearCoreData()
+                        self.isShowingAlert = true
+                    }.alert(isPresented: $isShowingAlert) {
+                        Alert(
+                            title: Text("Clear data store"),
+                            message: Text("Are you sure?"),
+                            primaryButton: Alert.Button.cancel(),
+                            secondaryButton: Alert.Button.destructive(Text("Yes")) { dataFactory.clearCoreData() }
+                        )
+                    }
                     }
                 }
             }
