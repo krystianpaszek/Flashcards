@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct HomescreenView: View {
+
+    @FetchRequest(entity: FCDCategory.entity(), sortDescriptors: []) var categories: FetchedResults<FCDCategory>
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                Section(header: Text("")) {
+                    ForEach(categories) { category in
+                        NavigationLink(destination: FlashcardsList(categoryName: category.name!)) {
+                            Text(category.name!)
+                        }
+                    }
+                }
+            }
+            .listStyle(InsetGroupedListStyle())
+            .navigationBarTitle("Select category")
+        }
     }
 }
 
