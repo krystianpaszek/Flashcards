@@ -101,6 +101,7 @@ struct LessonView: View {
     @ObservedObject var model: LessonViewModel
 
     @State private var isShowingErrorModal: Bool = false
+    @State private var isTranslationTextFieldFocused: Bool? = false
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -112,11 +113,15 @@ struct LessonView: View {
                         footer: Text("ERRORS - \(model.errorsCount)")
                     ) {
                         TextField(model.currentWord, text: $originalSpelling).disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                        TextField("", text: $translation, onCommit: {
-                            checkWord()
-                        })
-                            .autocapitalization(.none)
-                            .disableAutocorrection(true)
+                        FocusableTextField(
+                            text: $translation,
+                            nextResponder: .constant(nil),
+                            isResponder: $isTranslationTextFieldFocused,
+                            keyboard: .default,
+                            onReturn: {
+                                checkWord()
+                            }
+                        )
                     }
                     Section() {
                         HStack(alignment: .center) {
@@ -144,6 +149,9 @@ struct LessonView: View {
             }
         }
         .listStyle(GroupedListStyle())
+        .onAppear {
+            isTranslationTextFieldFocused = true
+        }
     }
 
     private func checkWord() {
