@@ -25,24 +25,10 @@ class LessonViewModel: ObservableObject {
     var currentTranslation: String = ""
     @Published var errorsCount: Int = 0
 
-    init(category: FCDCategory, testedLanguageCode: String) {
-        self.flashcards = (category.flashcards!.allObjects as! [FCDFlaschard]).map { (flashcard: FCDFlaschard) -> DirectionalFlashcard? in
-            var spelling: String?
-            var translation: String?
-            for word in flashcard.words!.allObjects as! [FCDWord] {
-                if word.language!.code == testedLanguageCode {
-                    translation = word.spelling
-                } else {
-                    spelling = word.spelling
-                }
-            }
-
-            if let spelling = spelling, let translation = translation {
-                return DirectionalFlashcard(spelling: spelling, translation: translation)
-            } else {
-                return nil
-            }
-        }.compactMap { $0 }
+    init(lesson: FCDLesson) {
+        let text = String(data: lesson.data!, encoding: .utf8)!
+        let parser = TestYourEnglishFormatParser()
+        self.flashcards = parser.parse(rawText: text)
 
         self.remainingWordsCount = flashcards.count
         let startIndex = availableIndexes.randomElement()!
