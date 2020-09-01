@@ -101,11 +101,13 @@ class LessonViewModel: LessonViewModelProtocol, ObservableObject {
 
 struct LessonView: View {
 
+    @Environment(\.presentationMode) var presentation
+    @ObservedObject var model: LessonViewModel
     @State private var originalSpelling: String = ""
     @State private var translation: String = ""
-    @ObservedObject var model: LessonViewModel
 
     @State private var isShowingErrorModal: Bool = false
+    @State private var isShowingFinishModal: Bool = false
     @State private var isTranslationTextFieldFocused: Bool? = false
 
     var body: some View {
@@ -141,6 +143,15 @@ struct LessonView: View {
                                     message: Text(model.currentTranslation),
                                     dismissButton: Alert.Button.cancel() {
                                         proceedToNextWordOrFinish()
+                                    }
+                                )
+                            })
+                            .alert(isPresented: $isShowingFinishModal, content: {
+                                Alert(
+                                    title: Text("Finished"),
+                                    message: Text("Congratulations"),
+                                    dismissButton: Alert.Button.default(Text("Done")) {
+                                        presentation.wrappedValue.dismiss()
                                     }
                                 )
                             })
