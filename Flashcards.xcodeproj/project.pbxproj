@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		97125D1B24D57CD300441B32 /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97125D1A24D57CD300441B32 /* HomescreenView.swift */; };
 		97125D1E24D57CFC00441B32 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97125D1D24D57CFC00441B32 /* LibraryView.swift */; };
+		97949EB824FDD52600EF6808 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97949EB724FDD52600EF6808 /* LessonView.swift */; };
 		979879E024D4DD7D008CC561 /* LanguagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979879DF24D4DD7D008CC561 /* LanguagesList.swift */; };
 		979FB49424FBCDBC0068CA6A /* FileImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979FB49324FBCDBC0068CA6A /* FileImporter.swift */; };
 		979FB49824FBCFFC0068CA6A /* TestYourEnglishFormatParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979FB49724FBCFFC0068CA6A /* TestYourEnglishFormatParser.swift */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		97125D1A24D57CD300441B32 /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
 		97125D1D24D57CFC00441B32 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		97949EB724FDD52600EF6808 /* LessonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
 		979879DF24D4DD7D008CC561 /* LanguagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesList.swift; sourceTree = "<group>"; };
 		979FB49324FBCDBC0068CA6A /* FileImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileImporter.swift; sourceTree = "<group>"; };
 		979FB49724FBCFFC0068CA6A /* TestYourEnglishFormatParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestYourEnglishFormatParser.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				979FB49224FBCD890068CA6A /* Data Management */,
 				97D8CDFB24D435140065E344 /* RootView.swift */,
 				97125D1A24D57CD300441B32 /* HomescreenView.swift */,
+				97949EB724FDD52600EF6808 /* LessonView.swift */,
 				97125D1C24D57CDA00441B32 /* Library */,
 				97D8CDFD24D435160065E344 /* Assets.xcassets */,
 				97D8CE0224D435160065E344 /* LaunchScreen.storyboard */,
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97949EB824FDD52600EF6808 /* LessonView.swift in Sources */,
 				97D8CE1A24D436A80065E344 /* CategoriesList.swift in Sources */,
 				979879E024D4DD7D008CC561 /* LanguagesList.swift in Sources */,
 				97D8CE1C24D436B70065E344 /* WordsList.swift in Sources */,
