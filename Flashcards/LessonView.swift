@@ -85,12 +85,17 @@ class LessonViewModel: LessonViewModelProtocol, ObservableObject {
         }
     }
 
-    func nextWord() {
-        let nextIndex = availableIndexes.randomElement()!
+    func nextWord() -> Bool {
+        self.remainingWordsCount = flashcards.count - traversedIndexes.count
+        guard let nextIndex = availableIndexes.randomElement() else {
+            return false
+        }
+
         self.currentIndex = nextIndex
         self.currentWord = flashcards[nextIndex].spelling
         self.currentTranslation = flashcards[nextIndex].translation
-        self.remainingWordsCount = flashcards.count - traversedIndexes.count
+
+        return true
     }
 }
 
@@ -135,8 +140,7 @@ struct LessonView: View {
                                     title: Text("Erorr! Correct translation:"),
                                     message: Text(model.currentTranslation),
                                     dismissButton: Alert.Button.cancel() {
-                                        translation = ""
-                                        model.nextWord()
+                                        proceedToNextWordOrFinish()
                                     }
                                 )
                             })
@@ -155,11 +159,18 @@ struct LessonView: View {
     }
 
     private func checkWord() {
+        isTranslationTextFieldFocused = false
         if !model.submit(translation: translation) {
             isShowingErrorModal = true
         } else {
-            translation = ""
-            model.nextWord()
+            proceedToNextWordOrFinish()
+        }
+    }
+
+    private func proceedToNextWordOrFinish() {
+        translation = ""
+        if !model.nextWord() {
+            isShowingFinishModal = true
         }
     }
 }
