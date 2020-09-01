@@ -17,7 +17,7 @@ struct HomescreenView: View {
             List {
                 Section(header: Text("")) {
                     ForEach(categories) { category in
-                        NavigationLink(destination: FlashcardsList(categoryName: category.name!)) {
+                        NavigationLink(destination: LessonView(model: LessonViewModel(category: category, testedLanguageCode: "de"))) {
                             Text(category.name!)
                         }
                     }
