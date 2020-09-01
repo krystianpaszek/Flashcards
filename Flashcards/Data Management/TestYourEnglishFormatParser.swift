@@ -8,19 +8,14 @@
 
 import Foundation
 
-struct TestYourEnglishItem {
-    let originalSpelling: String
-    let translation: String
-}
-
 struct TestYourEnglishFormatParser {
-    func parse(rawText string: String) -> [TestYourEnglishItem] {
+    func parse(rawText string: String) -> [DirectionalFlashcard] {
         let lines = string.components(separatedBy: "\r\n")
-        let items = lines.map { (line: String) -> TestYourEnglishItem in
+        let items = lines.map { (line: String) -> DirectionalFlashcard in
             let components = line.components(separatedBy: ";")
-            let original =  components[2]
-            let translation = components[1]
-            return TestYourEnglishItem(originalSpelling: original, translation: translation)
+            let original =  components[1]
+            let translation = components[2]
+            return DirectionalFlashcard(spelling: original, translation: translation)
         }
 
         return items
