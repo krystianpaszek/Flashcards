@@ -60,15 +60,6 @@ struct LessonView: View {
                                     }
                                 )
                             })
-                            .alert(isPresented: $isShowingFinishModal, content: {
-                                Alert(
-                                    title: Text("Finished"),
-                                    message: Text("Congratulations"),
-                                    dismissButton: Alert.Button.default(Text("Done")) {
-                                        presentation.wrappedValue.dismiss()
-                                    }
-                                )
-                            })
                             Spacer()
                         }
                     }
@@ -81,6 +72,15 @@ struct LessonView: View {
         .onAppear {
             isTranslationTextFieldFocused = true
         }
+        .alert(isPresented: $isShowingFinishModal, content: {
+            Alert(
+                title: Text("Finished"),
+                message: Text("Congratulations"),
+                dismissButton: Alert.Button.default(Text("Done")) {
+                    presentation.wrappedValue.dismiss()
+                }
+            )
+        })
     }
 
     private func checkWord() {
