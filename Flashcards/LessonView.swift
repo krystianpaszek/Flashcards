@@ -50,7 +50,6 @@ struct LessonView: View {
                             Button("Check") {
                                 checkWord()
                             }
-                            .keyboardShortcut(.return)
                             .alert(isPresented: $isShowingErrorModal, content: {
                                 Alert(
                                     title: Text("Erorr! Correct translation:"),
