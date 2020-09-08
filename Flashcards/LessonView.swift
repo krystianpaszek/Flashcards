@@ -24,6 +24,8 @@ struct LessonView: View {
     @State private var isShowingFinishModal: Bool = false
     @State private var isTranslationTextFieldFocused: Bool? = false
 
+    @State private var translationFieldBackgroundColor: Color? = nil
+
     var body: some View {
         ZStack(alignment: .top) {
             Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all)
@@ -42,6 +44,10 @@ struct LessonView: View {
                             onReturn: {
                                 checkWord()
                             }
+                        )
+                        .listRowBackground(
+                            translationFieldBackgroundColor
+                                .animation(.linear)
                         )
                     }
                     Section() {
@@ -83,18 +89,30 @@ struct LessonView: View {
     }
 
     private func checkWord() {
+        let color: Color = model.submit(translation: translation) ? .green : .red
         isTranslationTextFieldFocused = false
-        if !model.submit(translation: translation) {
-            isShowingErrorModal = true
-        } else {
+
+        // only set after checking if translation is correct!
+        translation = model.currentTranslation
+
+        flashTranslationTextField(with: color, completion: {
             proceedToNextWordOrFinish()
-        }
+        })
     }
 
     private func proceedToNextWordOrFinish() {
         translation = ""
         if !model.nextWord() {
             isShowingFinishModal = true
+        }
+    }
+
+    private func flashTranslationTextField(with color: Color, completion: (() -> Void)? = nil) {
+        translationFieldBackgroundColor = color
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            translationFieldBackgroundColor = .clear
+            completion?()
         }
     }
 }
