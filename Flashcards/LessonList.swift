@@ -11,6 +11,7 @@ import SwiftUI
 struct LessonList: View {
 
     @FetchRequest(entity: FCDLesson.entity(), sortDescriptors: [NSSortDescriptor(key: "name", ascending: true)]) var lessons: FetchedResults<FCDLesson>
+    @EnvironmentObject private var dataFactory: DataFactory
     @State private var isImporting: Bool = false
 
     var body: some View {
@@ -20,7 +21,7 @@ struct LessonList: View {
                     NavigationLink(destination: LessonView(model: LessonViewModel(lesson: lesson))) {
                         Text(lesson.name!)
                     }
-                }
+                }.onDelete(perform: deleteLessons(at:))
             }
         }
         .listStyle(InsetGroupedListStyle())
@@ -42,6 +43,14 @@ struct LessonList: View {
         })
     }
 
+    private func deleteLessons(at offsets: IndexSet) {
+        offsets.forEach { offset in
+            let lesson = lessons[offset]
+
+            guard let lessonName = lesson.name else { return }
+            dataFactory.removeLesson(name: lessonName)
+        }
+    }
 }
 
 struct LessonList_Previews: PreviewProvider {

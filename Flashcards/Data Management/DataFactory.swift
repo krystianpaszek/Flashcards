@@ -28,6 +28,13 @@ class DataFactory: NSObject, ObservableObject {
         return lesson
     }
 
+    // MARK: - Removing entities
+    func removeLesson(name: String) {
+        let lesson = getLesson(name: name, in: context)
+        context.delete(lesson)
+        saveContext()
+    }
+
     // MARK: - Public functions
     func clearCoreData() {
         removeAll(in: FCDLesson.fetchRequest(), context: context)
