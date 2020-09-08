@@ -10,14 +10,14 @@ import Foundation
 
 struct TestYourEnglishFormatParser {
     func parse(rawText string: String) -> [DirectionalFlashcard] {
-        let lines = string.components(separatedBy: "\r\n")
-        let items = lines.map { (line: String) -> DirectionalFlashcard in
-            let components = line.components(separatedBy: ";")
-            let original =  components[1]
-            let translation = components[2]
-            return DirectionalFlashcard(spelling: original, translation: translation)
-        }
-
-        return items
+        string
+            .components(separatedBy: "\r\n")
+            .filter { !$0.isEmpty }
+            .map { line in
+                let components = line.components(separatedBy: ";")
+                let original =  components[1]
+                let translation = components[2]
+                return DirectionalFlashcard(spelling: original, translation: translation)
+            }
     }
 }
