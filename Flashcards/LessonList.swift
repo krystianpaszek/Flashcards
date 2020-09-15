@@ -46,10 +46,13 @@ struct LessonList: View {
     private func deleteLessons(at offsets: IndexSet) {
         offsets.forEach { offset in
             let lesson = lessons[offset]
-
-            guard let lessonName = lesson.name else { return }
-            dataFactory.removeLesson(name: lessonName)
+            delete(lesson: lesson)
         }
+    }
+
+    private func delete(lesson: FCDLesson) {
+        guard let lessonName = lesson.name else { return }
+        dataFactory.removeLesson(name: lessonName)
     }
 }
 
